@@ -34,12 +34,6 @@ public class MemberApiController {
 
     @Data
     @AllArgsConstructor
-    static class Result<T> {
-        private T data;
-    }
-
-    @Data
-    @AllArgsConstructor
     static class MemberDto {
         private String name;
     }
