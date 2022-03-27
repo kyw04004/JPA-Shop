@@ -6,6 +6,7 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.NewOrderRepository;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import org.assertj.core.api.Assertions;
@@ -24,7 +25,7 @@ public class OrderServiceTest {
     @Autowired EntityManager em;
     @Autowired OrderService orderService;
     @Autowired
-    OrderRepository orderRepository;
+    NewOrderRepository orderRepository;
 
     @Test
     public void 상품주문() {
@@ -38,7 +39,7 @@ public class OrderServiceTest {
         Long orderId = orderService.order(member.getId(), book.getId(), orderCount);
 
         //then
-        Order getOrder = orderRepository.findOne(orderId);
+        Order getOrder = orderRepository.findById(orderId).get();
 
         Assertions.assertThat(OrderStatus.ORDER).isEqualTo(getOrder.getStatus());
         Assertions.assertThat(1).isEqualTo(getOrder.getOrderItems().size());
@@ -77,7 +78,7 @@ public class OrderServiceTest {
         orderService.cancelOrder(orderId);
 
         //then
-        Order getOrder = orderRepository.findOne(orderId);
+        Order getOrder = orderRepository.findById(orderId).get();
 
         Assertions.assertThat(OrderStatus.CANCEL).isEqualTo(getOrder.getStatus());
         Assertions.assertThat(10).isEqualTo(item.getStockQuantity());

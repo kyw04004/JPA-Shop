@@ -4,6 +4,7 @@ package jpabook.jpashop.api;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.repository.NewOrderRepository;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
 import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryRepository;
@@ -35,7 +36,7 @@ public class OrderSimpleApiController {
         사용한다.
     */
 
-    private final OrderRepository orderRepository;
+    private final NewOrderRepository orderRepository;
     private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     /**

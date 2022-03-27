@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
 
-    private final OrderRepository orderRepository;
+    private final NewOrderRepository orderRepository;
     private final NewMemberRepository memberRepository;
     private final NewItemRepository itemRepository;
 
@@ -52,7 +52,7 @@ public class OrderService {
     @Transactional
     public void cancelOrder(Long orderId) {
         //주문 엔티티 조회
-        Order order = orderRepository.findById(orderId);
+        Order order = orderRepository.findById(orderId).orElseThrow(() -> new IllegalArgumentException("Not exists order"));
         //주문 취소
         order.cancel();
     }

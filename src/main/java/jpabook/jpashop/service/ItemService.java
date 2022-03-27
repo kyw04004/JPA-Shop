@@ -23,7 +23,7 @@ public class ItemService {
 
     @Transactional
     public Item updateItem(Long itemId, String name, int price, int stockQuantity) {
-        Item findItem = itemRepository.findById(itemId).get();
+        Item findItem = itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("Not exists item"));
         findItem.setName(name);
         findItem.setPrice(price);
         findItem.setStockQuantity(stockQuantity);
@@ -35,6 +35,6 @@ public class ItemService {
     }
 
     public Item findOne(Long itemId) {
-        return itemRepository.findById(itemId).get();
+        return itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("Not exists item"));
     }
 }
