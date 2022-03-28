@@ -1,6 +1,7 @@
 package jpabook.jpashop.repository.order.query;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 
 @Data
@@ -12,6 +13,7 @@ public class OrderItemQueryDto {
     private int orderPrice;
     private int count;
 
+    @QueryProjection
     public OrderItemQueryDto(Long orderId, String itemName, int orderPrice, int count) {
         this.orderId = orderId;
         this.itemName = itemName;

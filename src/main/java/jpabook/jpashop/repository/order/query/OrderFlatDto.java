@@ -1,5 +1,6 @@
 package jpabook.jpashop.repository.order.query;
 
+import com.querydsl.core.annotations.QueryProjection;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.OrderStatus;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class OrderFlatDto {
     private int orderPrice;
     private int count;
 
+    @QueryProjection
     public OrderFlatDto(Long orderId, String name, LocalDateTime orderDate, OrderStatus orderStatus, Address address, String itemName, int orderPrice, int count) {
         this.orderId = orderId;
         this.name = name;

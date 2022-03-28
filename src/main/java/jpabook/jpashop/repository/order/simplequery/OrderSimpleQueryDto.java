@@ -1,5 +1,6 @@
 package jpabook.jpashop.repository.order.simplequery;
 
+import com.querydsl.core.annotations.QueryProjection;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.OrderStatus;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class OrderSimpleQueryDto {
     private OrderStatus orderStatus;
     private Address address;
 
+    @QueryProjection
     public OrderSimpleQueryDto(Long orderId, String name, LocalDateTime
             orderDate, OrderStatus orderStatus, Address address) {
         this.orderId = orderId;

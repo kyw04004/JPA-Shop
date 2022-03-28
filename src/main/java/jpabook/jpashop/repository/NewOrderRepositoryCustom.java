@@ -10,4 +10,5 @@ public interface NewOrderRepositoryCustom {
     List<Order> findAllWithMemberDelivery();
     List<Order> findAllWithItem();
     List<Order> findAllWithMemberDelivery(int offset, int limit);
+    List<Order> findAll(OrderSearch orderSearch);
 }
